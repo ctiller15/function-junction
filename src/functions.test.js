@@ -17,17 +17,18 @@ const max = (a, b) => {
  * numbers as arguments and returns the largest of them.
  */
 const maxOfThree = (a,b,c) => {
-  if(a >= b) {
-    if(a >= c) {
-      return a;
-    } else {
-      return c;
-    }
-  } else if(b > c) {
-      return b;
-  } else {
-    return c;
-  }
+  // if(a >= b) {
+  //   if(a >= c) {
+  //     return a;
+  //   } else {
+  //     return c;
+  //   }
+  // } else if(b > c) {
+  //     return b;
+  // } else {
+  //   return c;
+  // }
+  return max(max(a,b), c);
 }
 // ...
 
@@ -45,11 +46,12 @@ const sum = (a, b) => {
  * all the numbers in an array.
  */
 const sumOfArray = (arr) => {
-  let sum = 0;
-  for(let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-  }
-  return sum;
+  // let sum = 0;
+  // for(let i = 0; i < arr.length; i++) {
+  //   sum += arr[i];
+  // }
+  // return sum;
+  return arr.reduce(sum, 0);
 }
 // ...
 
@@ -58,12 +60,14 @@ const sumOfArray = (arr) => {
  * and returns true if it is a vowel, false otherwise.
  */
 const isVowel = (letter) => {
-  if(typeof(letter) == "string"){
-    if(letter.toLowerCase() == 'a' || letter.toLowerCase() == 'e' || letter.toLowerCase() == 'i' || letter.toLowerCase() == 'o' || letter.toLowerCase() == 'u') {
-      return true;
-    }
-  }
-  return false;
+  // if(typeof(letter) == "string"){
+  //   if(letter.toLowerCase() == 'a' || letter.toLowerCase() == 'e' || letter.toLowerCase() == 'i' || letter.toLowerCase() == 'o' || letter.toLowerCase() == 'u') {
+  //     return true;
+  //   }
+  // }
+  // return false;
+  let vowels = 'aeiouAEIOU';
+  return vowels.includes(letter);
 }
 // ...
 
@@ -76,22 +80,36 @@ const isVowel = (letter) => {
   * return the string "tothohisos isos fofunon".
   */
 const rovarspraket = (str) => {
-  let tempArr = [];
-  if(isNaN(str)) {
-    for(let i = 0; i < str.length; i++) {
-      tempArr.push(str[i]);
-      if(typeof(str) == "string") {
-        if(!isVowel(str[i])) {
-          tempArr.push("o" + str[i]);
-        }
-      }  
-    }
-  } else {
-    tempArr = [str + ""];
-  }
+  // let tempArr = [];
 
-  console.log(tempArr.join(""));
-  return String(tempArr.join(""));
+
+      // if(!isVowel(val)) {
+      //   return (val + "o" + val);
+      // } else {
+      //   return val;
+      // }
+
+    // for(let i = 0; i < str.length; i++) {
+    //   tempArr.push(str[i]);
+    //   if(typeof(str) == "string") {
+    //     if(!isVowel(str[i])) {
+    //       tempArr.push("o" + str[i]);
+    //     }
+    //   }  
+    // }
+
+  // else {
+  //   // tempArr = [str + ""];
+  // }
+
+  // console.log(tempArr.join(""));
+  // console.log(typeof(str));
+  if(isNaN(str)) {
+    str = str.split("").map( (val) => {
+      return !isVowel(val) ? (val + "o" + val) : val;
+    });
+  } 
+  return typeof(str) === "object" ? str.join("") : str + "";
 }
 // ...
 
@@ -102,11 +120,12 @@ const rovarspraket = (str) => {
  * string "books".
  */
 const reverse = (str) => {
-  let newStr = "";
-  for(let i = str.length - 1; i >= 0; i--) {
-    newStr += str[i];
-  }
-  return newStr;
+  // let newStr = "";
+  // for(let i = str.length - 1; i >= 0; i--) {
+  //   newStr += str[i];
+  // }
+  // return newStr;
+  return str.split("").reverse().join("");
 }
 // ...
 
@@ -117,16 +136,19 @@ const reverse = (str) => {
   * i.e. findLongestWord("book dogs") should return "book"
   */
 const findLongestWord = (str) => {
-  let tempArr = str.split(" ");
-  let longest = "";
-  let longestLength = 0;
-  for(let i = 0; i < tempArr.length; i++) {
-    if(tempArr[i].length > longestLength) {
-      longest = tempArr[i];
-      longestLength = tempArr[i].length;
-    }
-  }
-  return longest;
+  return str.split(" ").sort((a,b) => {
+    return b.length - a.length;
+  })[0];
+  // let tempArr = str.split(" ");
+  // let longest = "";
+  // let longestLength = 0;
+  // for(let i = 0; i < tempArr.length; i++) {
+  //   if(tempArr[i].length > longestLength) {
+  //     longest = tempArr[i];
+  //     longestLength = tempArr[i].length;
+  //   }
+  // }
+  // return longest;
 }
 // ...
 
