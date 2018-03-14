@@ -3,35 +3,68 @@
  * and returns the largest of them. Use the if-then-else
  * construct available in Javascript.
  */
-
+const max = (a, b) => {
+  if(a >= b) {
+    return a;
+  } else {
+    return b;
+  }
+}
 // ...
 
 /**
  * Define a function maxOfThree() that takes three
  * numbers as arguments and returns the largest of them.
  */
-
+const maxOfThree = (a,b,c) => {
+  if(a >= b) {
+    if(a >= c) {
+      return a;
+    } else {
+      return c;
+    }
+  } else if(b > c) {
+      return b;
+  } else {
+    return c;
+  }
+}
 // ...
 
 /*
  * Define a function sum() that takes two numbers as
  * arguments and computes the sum of those two numbers.
  */
-
+const sum = (a, b) => {
+  return a + b;
+}
 // ...
 
 /*
  * Define a function sumOfArray that calculates the sum of
  * all the numbers in an array.
  */
-
+const sumOfArray = (arr) => {
+  let sum = 0;
+  for(let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
 // ...
 
 /**
  * Write a function isVowel() that takes a character (i.e. a string of length 1)
  * and returns true if it is a vowel, false otherwise.
  */
-
+const isVowel = (letter) => {
+  if(typeof(letter) == "string"){
+    if(letter.toLowerCase() == 'a' || letter.toLowerCase() == 'e' || letter.toLowerCase() == 'i' || letter.toLowerCase() == 'o' || letter.toLowerCase() == 'u') {
+      return true;
+    }
+  }
+  return false;
+}
 // ...
 
  /**
@@ -42,7 +75,24 @@
   * For example, rovarspraket("this is fun") should
   * return the string "tothohisos isos fofunon".
   */
+const rovarspraket = (str) => {
+  let tempArr = [];
+  if(isNaN(str)) {
+    for(let i = 0; i < str.length; i++) {
+      tempArr.push(str[i]);
+      if(typeof(str) == "string") {
+        if(!isVowel(str[i])) {
+          tempArr.push("o" + str[i]);
+        }
+      }  
+    }
+  } else {
+    tempArr = [str + ""];
+  }
 
+  console.log(tempArr.join(""));
+  return String(tempArr.join(""));
+}
 // ...
 
 /**
@@ -51,7 +101,13 @@
  * reverse("skoob") should return the
  * string "books".
  */
-
+const reverse = (str) => {
+  let newStr = "";
+  for(let i = str.length - 1; i >= 0; i--) {
+    newStr += str[i];
+  }
+  return newStr;
+}
 // ...
 
  /**
@@ -60,7 +116,18 @@
   *
   * i.e. findLongestWord("book dogs") should return "book"
   */
-
+const findLongestWord = (str) => {
+  let tempArr = str.split(" ");
+  let longest = "";
+  let longestLength = 0;
+  for(let i = 0; i < tempArr.length; i++) {
+    if(tempArr[i].length > longestLength) {
+      longest = tempArr[i];
+      longestLength = tempArr[i].length;
+    }
+  }
+  return longest;
+}
 // ...
 
 /**
@@ -124,7 +191,7 @@ test('reverse()', (t) => {
 
 test('findLongestWord()', (t) => {
   t.is(findLongestWord('book dogs'), 'book')
-  t.is(findLongestWord('everything'), 'life the universe and everything')
+  t.is(findLongestWord('life the universe and everything'), 'everything')
 })
 
 /* eslint-enable */
