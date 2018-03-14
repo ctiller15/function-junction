@@ -3,12 +3,16 @@
  * and returns the largest of them. Use the if-then-else
  * construct available in Javascript.
  */
-const max = (a, b) => {
-  if(a >= b) {
-    return a;
-  } else {
-    return b;
-  }
+const max = (...arr) => {
+  let maxVal = arr.reduce( (a, b) => {
+    return a >= b ? a : b;
+  });
+  return maxVal;
+  // if(a >= b) {
+  //   return a;
+  // } else {
+  //   return b;
+  // }
 }
 // ...
 
@@ -25,8 +29,11 @@ const maxOfThree = (a,b,c) => {
  * Define a function sum() that takes two numbers as
  * arguments and computes the sum of those two numbers.
  */
-const sum = (a, b) => {
-  return a + b;
+const sum = (...arr) => {
+  let total = arr.reduce((a, b) => {
+    return a + b;
+  });
+  return total;
 }
 // ...
 
@@ -34,8 +41,9 @@ const sum = (a, b) => {
  * Define a function sumOfArray that calculates the sum of
  * all the numbers in an array.
  */
+
 const sumOfArray = (arr) => {
-  return arr.reduce(sum, 0);
+  return arr.length > 0 ? sum(...arr) : 0;
 }
 // ...
 
