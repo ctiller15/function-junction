@@ -99,6 +99,22 @@ const findLongestWord = (str) => {
 }
 // ...
 
+/*
+Write a function factorialize() that takes in an
+integer and returns the factorial of that provided
+integer. *taken from FreeCodeCamp*
+i.e. factorialize(5) returns 120.
+*/
+const factorialize = (num) => {
+  if(num <= 1) {
+    return 1;
+  } else {
+    return num * factorialize(num - 1);
+  }
+}
+// ...
+
+
 /**
  * NOTE: Don't modify anything below this line...
  */
@@ -162,5 +178,12 @@ test('findLongestWord()', (t) => {
   t.is(findLongestWord('book dogs'), 'book')
   t.is(findLongestWord('life the universe and everything'), 'everything')
 })
+
+test('factorialize()', (t) => {
+  t.is(factorialize(5), 120)
+  t.is(factorialize(10), 3628800)
+  t.is(factorialize(20), 2432902008176640000)
+  t.is(factorialize(0), 1)
+} )
 
 /* eslint-enable */
