@@ -4,10 +4,9 @@
  * construct available in Javascript.
  */
 const max = (...arr) => {
-  let maxVal = arr.reduce( (a, b) => {
+  return arr.reduce( (a, b) => {
     return a >= b ? a : b;
   });
-  return maxVal;
   // if(a >= b) {
   //   return a;
   // } else {
@@ -30,10 +29,9 @@ const maxOfThree = (a,b,c) => {
  * arguments and computes the sum of those two numbers.
  */
 const sum = (...arr) => {
-  let total = arr.reduce((a, b) => {
+  return arr.reduce((a, b) => {
     return a + b;
   });
-  return total;
 }
 // ...
 
